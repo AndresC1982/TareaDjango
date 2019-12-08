@@ -1,0 +1,11 @@
+<h1 align="center">Pacientes fumadores urgentes</h1>
+
+<div align="center">
+    <ul>
+        {% for person in all_people %}
+            <li>
+                Nombre: {{ person.nombre }} | Edad: {{ person.edad }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

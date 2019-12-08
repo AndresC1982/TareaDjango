@@ -1,0 +1,32 @@
+<h1 align="center">Agregue la informacion del joven</h1>
+
+<form action="/addJoven/" method="post">{% csrf_token %}
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 15%">Nombre:</label>
+        <input name="nombre" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 16.8%">Edad:</label>
+        <input type="number" min=16 max=40 name="edad" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 4%">Numero de historia clinica:</label>
+        <input name="noHistoriaClinica" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 0.5%">Es fumador:</label>
+        <input type="checkbox" name="fumador" />
+
+        <label style="padding-left: 1%; padding-right: 1%">Anos fumando:</label>
+        <input name="anos_fumando" />
+    </div>
+
+    <br>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <input type="submit" value="Agregar"/>
+    </div>
+</form>

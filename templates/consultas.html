@@ -1,0 +1,68 @@
+<h1 align="center">Agregue la informacion de la consulta</h1>
+
+<form action="/addConsulta/" method="post">{% csrf_token %}
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 12%">Id:</label>
+        <input name="idConsulta" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 3%">Cantidad de pacientes:</label>
+        <input type="number" min=0 name="cantidadPersonas" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 1%">Nombre especialista:</label>
+        <input name="nombreEspecialista" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <input type="radio" name="tipoConsulta" value="PEDIATRIA" checked>Pediatria
+        <input type="radio" name="tipoConsulta" value="URGENCIA">Urgencia
+        <input type="radio" name="tipoConsulta" value="CGI">CGI
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <input type="radio" name="estado" value="ACTIVA" checked>Activa
+        <input type="radio" name="estado" value="INACTIVA">Inactiva
+    </div>
+
+    <br>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <input type="submit" value="Agregar"/>
+    </div>
+</form>
+
+<br>
+
+<div align="center">
+    <form action="/mayorConsulta/" 
+        style="display: inline;" 
+        method="post">{% csrf_token %}
+        <input type="submit" value="Mayor consulta"/>
+    </form>
+    <form action="/liberarConsultas/" 
+        style="display: inline;" 
+        method="post">{% csrf_token %}
+        <input type="submit" value="Liberar Consultas"/>
+    </form>
+    <h3>Lista de consultas</h3>
+    <ul>
+        {% for consulta in all_consultas %}
+            <li>
+                Tipo: {{ consulta.tipoConsulta }} | Especialista: {{ consulta.nombreEspecialista }} | Estado: {{ consulta.estado }} | Cantidad de personas: {{ consulta.cantidadPersonas }}
+                <form action="/delConsulta/{{ consulta.id }}/" 
+                    style="display: inline;" 
+                    method="post">{% csrf_token %}
+                    <input type="submit" value="Eliminar"/>
+                </form>
+                <form action="/changeEstado/{{ consulta.id }}/" 
+                    style="display: inline;" 
+                    method="post">{% csrf_token %}
+                    <input type="submit" value="Cambiar Estado"/>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

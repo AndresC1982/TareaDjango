@@ -1,0 +1,29 @@
+<h1 align="center">Agregue la informacion del anciano</h1>
+
+<form action="/addAnciano/" method="post">{% csrf_token %}
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 12%">Nombre:</label>
+        <input name="nombre" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 13.8%">Edad:</label>
+        <input type="number" min=41 name="edad" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 1%">Numero de historia clinica:</label>
+        <input name="noHistoriaClinica" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label style="padding-right: 13.8%">Dieta:</label>
+        <input type="checkbox" name="dieta" />
+    </div>
+
+    <br>
+
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <input type="submit" value="Agregar"/>
+    </div>
+</form>

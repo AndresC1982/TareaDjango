@@ -1,0 +1,43 @@
+<h1 align="center">Modulo Personas</h1>
+
+<div align="center">
+    <h3>Seleccione el tipo de persona que desea crear</h3>
+    <ul>
+        <li><a href="nino/">Nino</a></li>
+        <li><a href="joven/">Joven</a></li>
+        <li><a href="anciano/">Adulto</a></li>
+    </ul>
+</div>
+
+<br>
+
+<div align="center">
+    <form action="/fumadoresUrgente/" 
+        style="display: inline;" 
+        method="post">{% csrf_token %}
+        <input type="submit" value="Fumadores Urgente"/>
+    </form>
+    <h3>Personas por atender ordenadas por prioridad</h3>
+    <ul>
+        {% for person in all_people %}
+            <li>
+                Nombre: {{ person.nombre }} | Edad: {{ person.edad }}
+                <form action="/delPerson/{{ person.id }}/" 
+                    style="display: inline;" 
+                    method="post">{% csrf_token %}
+                    <input type="submit" value="Eliminar"/>
+                </form>
+                <form action="/atender/{{ person.id }}/" 
+                    style="display: inline;" 
+                    method="post">{% csrf_token %}
+                    <input type="submit" value="Atender"/>
+                </form>
+                <form action="/mayorRiesgo/{{ person.noHistoriaClinica }}/" 
+                    style="display: inline;" 
+                    method="post">{% csrf_token %}
+                    <input type="submit" value="Listar Mayor Riesgo"/>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
